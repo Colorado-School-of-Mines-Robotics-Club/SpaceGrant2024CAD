@@ -1,3 +1,8 @@
-This is the CAD github for the Version 2 of the Sand Surfer robot. If you have any CAD you would like to upload, please use Solidworks 2024 versions of CAD files for compatibility. 
+# SpaceGrant2023CAD
 
-For questions, contact Tristan
+This is the repo for the CAD designs for the 2024 SpaceGrant competition. Each folder will correspond to a different design and each design should have an assembly, parts, and stl folder for organization.
+
+# CAD Specifications
+
+ALL PARTS SHOULD BE IN MMGS.
+Try to use SolidWorks 2023/2024.
