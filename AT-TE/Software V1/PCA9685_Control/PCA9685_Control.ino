@@ -13,6 +13,8 @@ uint8_t servototal = 12;
 
 int default_delay = 1000;
 
+int direction = 1;
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
@@ -73,7 +75,7 @@ void arm_place_b(int servo_num) {
   // Move Horz
   Serial.print("Moving Servo ");
   Serial.println(servo_num);
-  if (servo_num < 5) {
+  if (servo_num > 5) {
     servo.setPWM(servo_num, 0, SERVOMAX);
   } else {
     servo.setPWM(servo_num, 0, SERVOMIN);
@@ -194,19 +196,21 @@ void turn_right() {
 
 void loop() {
   Serial.println("Navigate");
-  int direction = 1; //navigate();
 
-  switch (direction) {
-    case 1:
-      Serial.println("Move Forward");
-      move_forward();
-    case 0:
-      Serial.println("Move Left");
-      turn_left();
-    case 2:
-      Serial.println("Move Right");
-      turn_right();
-  } 
+  Serial.println("Move Forward");
+  move_forward();
+  delay(default_delay * 2);
+
+  Serial.println("Move Left");
+  turn_left();
+  delay(default_delay * 2);
+  
+  Serial.println("Move Forward");
+  move_forward();
+  delay(default_delay * 2);
+
+  Serial.println("Move Right");
+  turn_right();
   delay(default_delay * 2);
 
 }

@@ -62,15 +62,15 @@ long invalidCRC = 0;
 byte buffer[46];
 
 void setup() {
-  Serial.begin(115200);
-  Serial1.begin(LIDAR_BAUD, SERIAL_8N1, LIDAR_PIN, LIDAR_PWM);
+  Serial.begin(230400);
+  //Serial1.begin(LIDAR_BAUD, SERIAL_8N1, LIDAR_PIN, LIDAR_PWM);
 }
 
 void loop() {
-  if (Serial1.available()) {
-    if (Serial1.read() == HEADER) {  //Finding the header marker
+  if (Serial.available()) {
+    if (Serial.read() == HEADER) {  //Finding the header marker
       lidarFrame.header = HEADER;
-      Serial1.readBytes((char*)&lidarFrame + 1, sizeof(LiDARFrame) - 1);
+      Serial.readBytes((char*)&lidarFrame + 1, sizeof(LiDARFrame) - 1);
       
       if (CalCRC8((uint8_t*)&lidarFrame, sizeof(LiDARFrame) - 1) == lidarFrame.crc8) {
         
